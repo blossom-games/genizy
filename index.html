@@ -1,99 +1,661 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/favicon.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>genizymath</title>
-    <meta name="title" content="GN-Math">
-    <meta name="description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://genizymath.github.io/">
-    <meta property="og:title" content="GN-Math">
-    <meta property="og:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://genizymath.github.io/">
-    <meta name="twitter:title" content="GN-Math">
-	<meta name="google-adsense-account" content="ca-pub-5521219086088837">
-    <meta name="twitter:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
-    <meta name="keywords" content="unblocked games, games for school, browser games, chromebook games, no download games, html5 games, free unblocked games, genizymath, fun games at school, crazy cattle 3d, play crazy cattle 3d, crazy cattle 3d unblocked, crazy cattle, crazy cattle unblocked, play crazy cattle, crazy cattle online, crazy cattle 3d online">
-    <link rel="stylesheet" href="styles/style.css">
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WX5VS54ZDW"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>genizymath</title>
+  <meta name="title" content="GN-Math">
+  <meta name="description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://genizymath.github.io/">
+  <meta property="og:title" content="GN-Math">
+  <meta property="og:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://genizymath.github.io/">
+  <meta name="twitter:title" content="GN-Math">
+  <meta name="twitter:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
+  <meta name="keywords" content="unblocked games, games for school, browser games, chromebook games, no download games, html5 games, free unblocked games, genizymath, crazy cattle 3d, crazy cattle 3d unblocked">
+  <meta name="google-adsense-account" content="ca-pub-5521219086088837">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX5VS54ZDW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-WX5VS54ZDW');
+  </script>
+  <style>
+    :root {
+      --primary: #fc2651;
+      --text: #333;
+      --bg: #fff;
+      --card-bg: #f8f8f8;
+      --card-border: #e0e0e0;
+      --shadow: rgba(0,0,0,0.1);
+      --popup-bg: #fff;
+    }
+    .dark-mode {
+      --text: #e0e0e0;
+      --bg: #181818;
+      --card-bg: #252525;
+      --card-border: #383838;
+      --shadow: rgba(0,0,0,0.4);
+      --popup-bg: #252525;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background .3s, color .3s;
+    }
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-WX5VS54ZDW');
-    </script>
+    /* ── HEADER ── */
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: .75rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .search-container {
+      display: flex;
+      gap: 8px;
+      flex: 1;
+      min-width: 180px;
+      max-width: 480px;
+    }
+    #searchBar {
+      padding: .45rem .75rem;
+      border-radius: 6px;
+      border: none;
+      flex-grow: 1;
+      font-size: 15px;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      outline: none;
+    }
+    #searchBar::placeholder { color: rgba(255,255,255,0.7); }
+    #searchBar:focus { background: rgba(255,255,255,0.28); }
+    #sortOptions {
+      padding: .45rem .6rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      cursor: pointer;
+      outline: none;
+    }
+    #sortOptions option { color: #333; background: #fff; }
+    .btn-settings {
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      border-radius: 6px;
+      padding: .45rem 1rem;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .btn-settings:hover { background: rgba(255,255,255,0.35); }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    .section-header {
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      color: var(--text);
+    }
+    .zone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: .75rem;
+    }
+
+    /* ── CARDS ── */
+    .zone-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 2px 6px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .zone-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+    .zone-item img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: var(--card-border);
+      display: block;
+    }
+    .zone-item .zone-label {
+      padding: 8px 10px;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text);
+      text-align: center;
+      line-height: 1.3;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+    }
+    .zone-item:hover .zone-label { color: var(--primary); }
+
+    /* ── ADS ── */
+    .ad-slot { text-align: center; margin: 1.25rem 0; }
+
+    /* ── POPUP OVERLAY ── */
+    #popupOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    #popupOverlay.active { display: flex; }
+    .popup {
+      background: var(--popup-bg);
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      width: 92%;
+      max-width: 480px;
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .popup-header {
+      background: var(--primary);
+      color: #fff;
+      padding: .75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .popup-header h3 { margin: 0; font-size: 1.1rem; }
+    .popup-close {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+    }
+    #popupBody {
+      padding: 1rem;
+      overflow-y: auto;
+      color: var(--text);
+    }
+    #popupBody input[type="text"] {
+      width: 100%;
+      padding: .5rem .75rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      background: var(--card-bg);
+      color: var(--text);
+      font-size: 15px;
+    }
+    .popup-btn {
+      display: block;
+      width: 100%;
+      padding: .7rem;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-bottom: .75rem;
+      transition: opacity .2s;
+    }
+    .popup-btn:hover { opacity: .88; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--card-bg);
+      border-top: 1px solid var(--card-border);
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-links a, .footer-links label {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .footer-links a:hover, .footer-links label:hover { text-decoration: underline; }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text);
+      opacity: .55;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .header-content { flex-direction: column; align-items: stretch; }
+      .search-container { max-width: 100%; }
+      .zone-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+    }
+  </style>
 </head>
 <body class="dark-mode">
-    <div id="ad-top" style="text-align: center; margin: 1rem 0;">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837"
-     crossorigin="anonymous"></script>
-    </div>
-    <header>
-        <div class="header-content">
-            <a class="logo" href="/" style="text-decoration: none; color: inherit;">genizymath</a>
-            <div class="search-container">
-                <input type="text" id="searchBar" placeholder="Search zones..." oninput="filterZones()">
-                <select id="sortOptions" onchange="sortZones()">
-                    <option value="name">Name</option>
-                    <option value="id">ID (Date)</option>
-                    <option value="popular">Popular</option>
-                </select>
-            </div>
-            <div class="control-buttons">
-                <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">Settings</button>
-            </div>
-        </div>
-    </header>
 
-    <main>
-        <div id="ad-middle" style="text-align: center; margin: 2rem 0;">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837"
-     crossorigin="anonymous"></script>
-        </div>
-        <details id="featuredZonesWrapper" open>
-            <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</summary>
-            <div id="featuredZones" class="zone-container"></div>
-        </details>
-        <br><hr><br>
-        <details id="allZonesWrapper" open>
-            <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</summary>
-            <div id="container">Loading...</div>
-        </details>
-    </main>
-        <div id="ad-bottom" style="text-align: center; margin: 2rem 0;">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837"
-     crossorigin="anonymous"></script>
-        </div>
-    <div id="popupOverlay">
-        <div class="popup">
-            <div class="popup-header">
-                <h3 id="popupTitle">Title</h3>
-                <button id="popupClose" onclick="closePopup()">×</button>
-            </div>
-            <div id="popupBody">
-                Content will be here
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="footer-links">
-            <a href="#" onclick="showContact(); return false;">Contact</a>
-            <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
-            <a href="javascript:saveData()">Export Data</a>
-            <label for="importData" style="color: var(--primary-color); cursor: pointer;">Import Data</label>
-            <input type="file" id="importData" style="display: none;" onchange="loadData(event)">
-        </div>
-    </footer>
+  <div class="ad-slot">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837" crossorigin="anonymous"></script>
+  </div>
 
-    <script src="javascript/index.js"></script>
+  <header>
+    <div class="header-content">
+      <a class="logo" href="/">genizymath</a>
+      <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Search games..." oninput="filterZones()">
+        <select id="sortOptions" onchange="sortZones()">
+          <option value="name">Name</option>
+          <option value="id">Date</option>
+          <option value="popular">Popular</option>
+        </select>
+      </div>
+      <button class="btn-settings" id="settingsBtn">Settings</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="ad-slot">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837" crossorigin="anonymous"></script>
+    </div>
+
+    <details id="featuredWrapper" open>
+      <summary class="section-header" id="featuredSummary">Featured Zones</summary>
+      <div class="zone-grid" id="featuredZones"></div>
+    </details>
+
+    <br><hr style="border-color:var(--card-border)"><br>
+
+    <details id="allWrapper" open>
+      <summary class="section-header" id="allSummary">All Zones</summary>
+      <div class="zone-grid" id="container">
+        <div class="empty-state">Loading games…</div>
+      </div>
+    </details>
+  </main>
+
+  <div class="ad-slot">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837" crossorigin="anonymous"></script>
+  </div>
+
+  <!-- POPUP -->
+  <div id="popupOverlay">
+    <div class="popup">
+      <div class="popup-header">
+        <h3 id="popupTitle">Title</h3>
+        <button class="popup-close" onclick="closePopup()">×</button>
+      </div>
+      <div id="popupBody">Content will be here</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#" onclick="showContact(); return false;">Contact</a>
+      <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
+      <a href="javascript:saveData()">Export Data</a>
+      <label for="importData">Import Data</label>
+      <input type="file" id="importData" style="display:none" onchange="loadData(event)">
+    </div>
+  </footer>
+
+  <script>
+    /* ─── CONFIG ─── */
+    const coverURL  = "https://cdn.jsdelivr.net/gh/freebuisness/covers@main";
+    const htmlURL   = "https://cdn.jsdelivr.net/gh/freebuisness/html@main";
+    const zonesURL  = "https://cdn.jsdelivr.net/gh/freebuisness/assets@main/zones.json?t=" + Date.now();
+
+    let zones = [];
+    let popularityData = {};
+
+    /* ─── INIT ─── */
+    async function listZones() {
+      try {
+        const res  = await fetch(zonesURL);
+        const json = await res.json();
+        zones = json;
+        if (zones.length) zones[0].featured = true; // always pin first (discord zone)
+
+        await fetchPopularity();
+        sortZones();
+
+        // Deep-link: ?id=N
+        const params = new URLSearchParams(window.location.search);
+        const id     = params.get('id');
+        const embed  = window.location.hash.includes("embed");
+        if (id) {
+          const zone = zones.find(z => String(z.id) === String(id));
+          if (zone) {
+            if (embed) {
+              handleEmbed(zone);
+            } else {
+              openZone(zone);
+            }
+          }
+        }
+      } catch (err) {
+        console.error(err);
+        document.getElementById('container').innerHTML =
+          `<div class="empty-state">Error loading games: ${err.message}</div>`;
+      }
+    }
+
+    async function fetchPopularity() {
+      try {
+        const res  = await fetch("https://data.jsdelivr.com/v1/stats/packages/gh/freebuisness/html@main/files?period=year");
+        const data = await res.json();
+        data.forEach(file => {
+          const m = file.name.match(/\/(\d+)\.html$/);
+          if (m) popularityData[parseInt(m[1])] = file.hits.total;
+        });
+      } catch { /* popularity is optional */ }
+    }
+
+    /* ─── SORT / FILTER ─── */
+    function sortZones() {
+      const by = document.getElementById('sortOptions').value;
+      if (by === 'name')    zones.sort((a, b) => a.name.localeCompare(b.name));
+      if (by === 'id')      zones.sort((a, b) => a.id - b.id);
+      if (by === 'popular') zones.sort((a, b) => (popularityData[b.id] || 0) - (popularityData[a.id] || 0));
+      // always float id=-1 to top
+      zones.sort((a, b) => (a.id === -1 ? -1 : b.id === -1 ? 1 : 0));
+
+      const featuredContainer = document.getElementById('featuredZones');
+      if (!featuredContainer.innerHTML) {
+        displayFeaturedZones(zones.filter(z => z.featured));
+      }
+      displayZones(zones);
+    }
+
+    function filterZones() {
+      const q = document.getElementById('searchBar').value.toLowerCase();
+      if (q) document.getElementById('featuredWrapper').removeAttribute('open');
+      const filtered = zones.filter(z => z.name.toLowerCase().includes(q));
+      displayZones(filtered);
+    }
+
+    /* ─── RENDER ─── */
+    function makeCard(zone) {
+      const url = getZoneURL(zone);
+      const a   = document.createElement('a');
+      a.className = 'zone-item';
+      a.href = url;
+      a.rel  = 'noopener';
+
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        openZone(zone);
+      });
+
+      const img = document.createElement('img');
+      img.dataset.src = zone.cover.replace("{COVER_URL}", coverURL).replace("{HTML_URL}", htmlURL);
+      img.alt     = zone.name;
+      img.loading = "lazy";
+      img.classList.add('lazy-img');
+
+      const label = document.createElement('span');
+      label.className   = 'zone-label';
+      label.textContent = zone.name;
+
+      a.appendChild(img);
+      a.appendChild(label);
+      return a;
+    }
+
+    function displayZones(list) {
+      const container = document.getElementById('container');
+      container.innerHTML = '';
+      if (!list.length) {
+        container.innerHTML = '<div class="empty-state">No games found.</div>';
+      } else {
+        list.forEach(z => container.appendChild(makeCard(z)));
+        document.getElementById('allSummary').textContent = `All Zones (${list.length})`;
+      }
+      lazyLoadImages('#container .lazy-img');
+    }
+
+    function displayFeaturedZones(list) {
+      const fc = document.getElementById('featuredZones');
+      fc.innerHTML = '';
+      if (!list.length) return;
+      list.forEach(z => fc.appendChild(makeCard(z)));
+      document.getElementById('featuredSummary').textContent = `Featured Zones (${list.length})`;
+      lazyLoadImages('#featuredZones .lazy-img');
+    }
+
+    /* ─── LAZY LOAD ─── */
+    function lazyLoadImages(selector) {
+      const imgs = document.querySelectorAll(selector);
+      const io   = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy-img');
+            obs.unobserve(img);
+          }
+        });
+      }, { rootMargin: "120px", threshold: 0.01 });
+      imgs.forEach(img => io.observe(img));
+    }
+
+    /* ─── NAVIGATION ─── */
+    function getZoneURL(zone) {
+      if (zone.url && zone.url.startsWith("http")) return zone.url;
+      const slug = zone.name
+        .replace(/ /g, '-')
+        .toLowerCase()
+        .replace(/[^a-z0-9-]/g, '')
+        .replace(/-+/g, '-');
+      return "/games/" + slug;
+    }
+
+    function openZone(zone) {
+      const url = getZoneURL(zone);
+      if (zone.url && zone.url.startsWith("http")) {
+        window.open(url, "_blank");
+      } else {
+        window.location.href = url;
+      }
+    }
+
+    async function handleEmbed(zone) {
+      if (zone.url && zone.url.startsWith("http")) {
+        window.open(zone.url, "_blank");
+        return;
+      }
+      const src = zone.url.replace("{COVER_URL}", coverURL).replace("{HTML_URL}", htmlURL);
+      try {
+        const html = await fetch(src + "?t=" + Date.now()).then(r => r.text());
+        document.documentElement.innerHTML = html;
+
+        // Inject "play more" banner
+        const banner = Object.assign(document.createElement('div'), {
+          innerHTML: `Play more at <a href="https://genizymath.github.io" target="_blank">genizymath.github.io</a>! <button onclick="this.parentElement.remove()" style="margin-left:8px;background:none;border:none;cursor:pointer;font-weight:bold;">✖</button>`
+        });
+        Object.assign(banner.style, {
+          position:'fixed', bottom:'16px', right:'16px', background:'#cce5ff',
+          color:'#004085', padding:'10px 14px', border:'1px solid #b8daff',
+          borderRadius:'6px', boxShadow:'0 2px 8px rgba(0,0,0,.15)',
+          fontFamily:'sans-serif', zIndex:'9999', fontSize:'14px'
+        });
+        document.body.appendChild(banner);
+
+        // Re-execute scripts
+        document.querySelectorAll('script').forEach(old => {
+          const s = document.createElement('script');
+          old.src ? (s.src = old.src) : (s.textContent = old.textContent);
+          document.body.appendChild(s);
+        });
+      } catch (e) {
+        alert("Failed to load: " + e);
+      }
+    }
+
+    /* ─── SETTINGS ─── */
+    document.getElementById('settingsBtn').addEventListener('click', () => {
+      openPopup('Settings', `
+        <button class="popup-btn" onclick="darkMode()">Toggle Dark Mode</button>
+        <button class="popup-btn" onclick="tabCloak()">Tab Cloak</button>
+      `);
+    });
+
+    function openPopup(title, bodyHTML) {
+      document.getElementById('popupTitle').textContent = title;
+      document.getElementById('popupBody').innerHTML = bodyHTML;
+      document.getElementById('popupOverlay').classList.add('active');
+    }
+
+    function closePopup() {
+      document.getElementById('popupOverlay').classList.remove('active');
+    }
+
+    document.getElementById('popupOverlay').addEventListener('click', e => {
+      if (e.target === document.getElementById('popupOverlay')) closePopup();
+    });
+
+    function darkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function tabCloak() {
+      openPopup('Tab Cloak', `
+        <label style="font-weight:600;display:block;margin-bottom:6px;">Tab Title</label>
+        <input type="text" placeholder="Enter new title…" oninput="if((this.value+'').trim())document.title=this.value;else document.title='genizymath'">
+        <label style="font-weight:600;display:block;margin-bottom:6px;">Tab Icon (URL)</label>
+        <input type="text" placeholder="Icon URL…" oninput="cloakIcon(this.value)">
+      `);
+    }
+
+    function cloakIcon(url) {
+      let link = document.querySelector("link[rel~='icon']");
+      if (!link) { link = document.createElement('link'); link.rel = 'icon'; document.head.appendChild(link); }
+      link.href = (url + '').trim() || 'images/favicon.png';
+    }
+
+    /* ─── CONTACT / PRIVACY ─── */
+    function showContact() {
+      openPopup('Contact', `
+        <p style="margin-bottom:.5rem">Discord: <a href="https://discord.gg/NAFw4ykZ7n" target="_blank">discord.gg/NAFw4ykZ7n</a></p>
+        <p>Email: gn.math.business@gmail.com</p>
+      `);
+    }
+
+    function loadPrivacy() {
+      openPopup('Privacy Policy', `
+        <div style="max-height:55vh;overflow-y:auto">
+          <h2 style="margin-bottom:.5rem">PRIVACY POLICY</h2>
+          <p style="font-size:13px;margin-bottom:.75rem">Last updated April 17, 2025</p>
+          <p>This Privacy Notice for gn-math describes how and why we might access, collect, store, use, and/or share your personal information when you use our services.</p>
+          <h3 style="margin:1rem 0 .5rem">What we collect</h3>
+          <p>We may process personal information depending on how you interact with us. We do not process sensitive personal information and do not collect data from third parties.</p>
+          <h3 style="margin:1rem 0 .5rem">Your rights</h3>
+          <p>Depending on your location you may have rights regarding your personal information. Contact us via Discord or email to exercise them.</p>
+          <h3 style="margin:1rem 0 .5rem">Contact</h3>
+          <p><a href="https://discord.gg/NAFw4ykZ7n" target="_blank">discord.gg/NAFw4ykZ7n</a></p>
+        </div>
+      `);
+    }
+
+    /* ─── DATA EXPORT / IMPORT ─── */
+    function saveData() {
+      const data = JSON.stringify(localStorage) + "\n\n|\n\n" + document.cookie;
+      const a    = document.createElement('a');
+      a.href     = URL.createObjectURL(new Blob([data], { type: 'text/plain' }));
+      a.download = Date.now() + '.data';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function loadData(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const [lsData, cookieData] = ev.target.result.split("\n\n|\n\n");
+        try {
+          const parsed = JSON.parse(lsData);
+          for (const k in parsed) localStorage.setItem(k, parsed[k]);
+        } catch {}
+        if (cookieData) cookieData.split('; ').forEach(c => { document.cookie = c; });
+        alert('Data loaded');
+      };
+      reader.readAsText(file);
+    }
+
+    /* ─── SECURITY: block school filter domains ─── */
+    const schoolList = ["deledao","goguardian","lightspeed","linewize","securly",".edu/"];
+    function isBlocked(url) {
+      try { return schoolList.some(s => new URL(url, location.origin).hostname.includes(s)); } catch { return false; }
+    }
+    const _fetch = window.fetch;
+    window.fetch = (url, opts) => isBlocked(url) ? Promise.reject(new Error("blocked")) : _fetch(url, opts);
+    const _xhrOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(m, url) { if (!isBlocked(url)) _xhrOpen.apply(this, arguments); };
+    HTMLCanvasElement.prototype.toDataURL = () => "";
+
+    /* ─── BOOT ─── */
+    listZones();
+  </script>
 </body>
 </html>
-

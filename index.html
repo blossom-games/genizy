@@ -476,7 +476,8 @@
         .toLowerCase()
         .replace(/[^a-z0-9-]/g, '')
         .replace(/-+/g, '-');
-      return "games/" + slug;
+      /*special place to edit stuff*/
+      return "/genizy/games/" + slug;
     }
 
     function openZone(zone) {

@@ -5,26 +5,7 @@
   <link rel="apple-touch-icon" href="images/favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>genizymath</title>
-  <meta name="title" content="GN-Math">
-  <meta name="description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://genizymath.github.io/">
-  <meta property="og:title" content="GN-Math">
-  <meta property="og:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://genizymath.github.io/">
-  <meta name="twitter:title" content="GN-Math">
-  <meta name="twitter:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
-  <meta name="keywords" content="unblocked games, games for school, browser games, chromebook games, no download games, html5 games, free unblocked games, genizymath, crazy cattle 3d, crazy cattle 3d unblocked">
-  <meta name="google-adsense-account" content="ca-pub-5521219086088837">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX5VS54ZDW"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-WX5VS54ZDW');
-  </script>
+  <title>stuff</title>
   <style>
     :root {
       --primary: #fc2651;
@@ -294,10 +275,6 @@
 </head>
 <body class="dark-mode">
 
-  <div class="ad-slot">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837" crossorigin="anonymous"></script>
-  </div>
-
   <header>
     <div class="header-content">
       <a class="logo" href="/">genizymath</a>
@@ -314,9 +291,6 @@
   </header>
 
   <main>
-    <div class="ad-slot">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837" crossorigin="anonymous"></script>
-    </div>
 
     <details id="featuredWrapper" open>
       <summary class="section-header" id="featuredSummary">Featured Zones</summary>
@@ -332,10 +306,6 @@
       </div>
     </details>
   </main>
-
-  <div class="ad-slot">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837" crossorigin="anonymous"></script>
-  </div>
 
   <!-- POPUP -->
   <div id="popupOverlay">
@@ -506,7 +476,7 @@
         .toLowerCase()
         .replace(/[^a-z0-9-]/g, '')
         .replace(/-+/g, '-');
-      return "/games/" + slug;
+      return "games/" + slug;
     }
 
     function openZone(zone) {
@@ -591,31 +561,6 @@
       if (!link) { link = document.createElement('link'); link.rel = 'icon'; document.head.appendChild(link); }
       link.href = (url + '').trim() || 'images/favicon.png';
     }
-
-    /* ─── CONTACT / PRIVACY ─── */
-    function showContact() {
-      openPopup('Contact', `
-        <p style="margin-bottom:.5rem">Discord: <a href="https://discord.gg/NAFw4ykZ7n" target="_blank">discord.gg/NAFw4ykZ7n</a></p>
-        <p>Email: gn.math.business@gmail.com</p>
-      `);
-    }
-
-    function loadPrivacy() {
-      openPopup('Privacy Policy', `
-        <div style="max-height:55vh;overflow-y:auto">
-          <h2 style="margin-bottom:.5rem">PRIVACY POLICY</h2>
-          <p style="font-size:13px;margin-bottom:.75rem">Last updated April 17, 2025</p>
-          <p>This Privacy Notice for gn-math describes how and why we might access, collect, store, use, and/or share your personal information when you use our services.</p>
-          <h3 style="margin:1rem 0 .5rem">What we collect</h3>
-          <p>We may process personal information depending on how you interact with us. We do not process sensitive personal information and do not collect data from third parties.</p>
-          <h3 style="margin:1rem 0 .5rem">Your rights</h3>
-          <p>Depending on your location you may have rights regarding your personal information. Contact us via Discord or email to exercise them.</p>
-          <h3 style="margin:1rem 0 .5rem">Contact</h3>
-          <p><a href="https://discord.gg/NAFw4ykZ7n" target="_blank">discord.gg/NAFw4ykZ7n</a></p>
-        </div>
-      `);
-    }
-
     /* ─── DATA EXPORT / IMPORT ─── */
     function saveData() {
       const data = JSON.stringify(localStorage) + "\n\n|\n\n" + document.cookie;
